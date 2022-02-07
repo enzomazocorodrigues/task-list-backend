@@ -8,6 +8,7 @@ import {
   HttpException,
   UnauthorizedException,
   Logger,
+  HttpStatus,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
@@ -26,6 +27,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
     errorResponse = this.handleNestError(error, errorResponse);
     errorResponse = this.handleCoreException(error, errorResponse);
 
+    const httpStatus =
+      error instanceof HttpException
+        ? error.getStatus()
+        : HttpStatus.INTERNAL_SERVER_ERROR;
+
     const message: string =
       `Method: ${request.method}, ` +
       `Path: ${request.path}, ` +
@@ -33,7 +39,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     Logger.error(message);
 
-    response.json(errorResponse);
+    response.status(httpStatus).json(errorResponse);
   }
 
   private handleNestError(

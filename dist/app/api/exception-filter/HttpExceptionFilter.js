@@ -19,11 +19,14 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         let errorResponse = CoreApiResponse_1.CoreApiResponse.error(Code_1.Code.INTERNAL_ERROR.code, error.message);
         errorResponse = this.handleNestError(error, errorResponse);
         errorResponse = this.handleCoreException(error, errorResponse);
+        const httpStatus = error instanceof common_1.HttpException
+            ? error.getStatus()
+            : common_1.HttpStatus.INTERNAL_SERVER_ERROR;
         const message = `Method: ${request.method}, ` +
             `Path: ${request.path}, ` +
             `Error: ${errorResponse.message}`;
         common_1.Logger.error(message);
-        response.json(errorResponse);
+        response.status(httpStatus).json(errorResponse);
     }
     handleNestError(error, errorResponse) {
         if (error instanceof common_1.HttpException) {
