@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsOptional, IsString, MaxLength, MinDate } from 'class-validator';
+import { IsBoolean, IsDate, IsNotEmpty, IsOptional, IsString, MaxLength, MinDate } from 'class-validator';
 import { Entity } from 'src/core/common/entity/Entity';
 import { Nullable } from 'src/core/common/type/CommonTypes';
 import { v4 } from 'uuid';
@@ -17,6 +17,7 @@ export type UpdateTaskPayload = {
 
 export class Task extends Entity<string> {
   @MaxLength(80)
+  @IsNotEmpty()
   @IsString()
   title: string;
 

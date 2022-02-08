@@ -36,6 +36,7 @@ class Task extends Entity_1.Entity {
 }
 __decorate([
     (0, class_validator_1.MaxLength)(80),
+    (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Task.prototype, "title", void 0);
