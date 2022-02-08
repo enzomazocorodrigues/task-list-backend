@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsString, MaxLength, MinDate } from 'class-validator';
+import { IsBoolean, IsDate, IsOptional, IsString, MaxLength, MinDate } from 'class-validator';
 import { Entity } from 'src/core/common/entity/Entity';
 import { Nullable } from 'src/core/common/type/CommonTypes';
 import { v4 } from 'uuid';
@@ -20,8 +20,9 @@ export class Task extends Entity<string> {
   @IsString()
   title: string;
 
-  @MinDate(new Date())
+  @MinDate(new Date(), { message: 'minimal due_date must be today' })
   @IsDate()
+  @IsOptional()
   due_date: Nullable<Date>;
 
   @IsBoolean()

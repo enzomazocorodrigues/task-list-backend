@@ -3,6 +3,5 @@ import { CreateTaskPort } from '@core/domain/task/usecase/CreateTaskUseCase';
 export declare class CreateTaskAdapter extends UseCaseValidatableAdapter implements CreateTaskPort {
     title: string;
     due_date?: Date;
-    checked?: boolean;
     static adapt(payload: CreateTaskPort): Promise<CreateTaskAdapter>;
 }

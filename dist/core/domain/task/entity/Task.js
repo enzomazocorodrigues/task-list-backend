@@ -40,8 +40,9 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "title", void 0);
 __decorate([
-    (0, class_validator_1.MinDate)(new Date()),
+    (0, class_validator_1.MinDate)(new Date(), { message: 'minimal due_date must be today' }),
     (0, class_validator_1.IsDate)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
 ], Task.prototype, "due_date", void 0);
 __decorate([

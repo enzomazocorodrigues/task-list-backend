@@ -21,9 +21,5 @@ __decorate([
     (0, swagger_1.ApiProperty)({ type: 'string', required: false, default: null }),
     __metadata("design:type", String)
 ], CreateTaskApiBody.prototype, "due_date", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ type: 'boolean', required: false, default: false }),
-    __metadata("design:type", Boolean)
-], CreateTaskApiBody.prototype, "checked", void 0);
 exports.CreateTaskApiBody = CreateTaskApiBody;
 //# sourceMappingURL=CreateTaskApiBody.js.map

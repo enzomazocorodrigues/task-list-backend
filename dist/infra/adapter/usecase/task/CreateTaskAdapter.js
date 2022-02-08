@@ -32,12 +32,6 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Date)
 ], CreateTaskAdapter.prototype, "due_date", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)(),
-    (0, class_validator_1.IsBoolean)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Boolean)
-], CreateTaskAdapter.prototype, "checked", void 0);
 CreateTaskAdapter = CreateTaskAdapter_1 = __decorate([
     (0, class_transformer_1.Exclude)()
 ], CreateTaskAdapter);
